@@ -2,7 +2,7 @@
     --hDeg : 0deg;
     --mDeg: 0deg;
     --sDeg: 0deg;
-    --clockColor : darkslateblue;
+    --clockColor : #d1dae3;
 }
 
 *{
@@ -18,68 +18,83 @@ body{
     height: 100vh;
     justify-content: center;
     width: 100%;
+    background-color: #d1dae3;
 }
 
 .clock{
     background-color: var(--clockColor);
     border-radius: 50%;
-    border: 1px black solid;
+    color: #777777;
+    font-weight: 700;
+    text-shadow: 2px 2px #7777777a;
+    /* border: 1px black solid; */
     display: grid;
     grid-template-areas: ". twelve ."
     "nine center three"
     ". six .";
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(3,1fr);
-    height: 400px;
-    width: 400px;                
+    height: 500px;
+    width: 500px;     
+    box-shadow: 7px 7px 7px #989ea5, 
+    inset 0 0 50px #989ea5;        
+    padding: 15px; 
 }
 
 .hand{
-    height: 5px;
-    width: 11rem;
+    /* height: 5px;
+    width: 11rem; */
     background-color: black;
     
     transform-origin:top left;
-    border-radius: 10px;
+    border-radius: 5px;
     position: absolute;
-    bottom: 50%;
-    left: 50%;
+    /* bottom: 50%;
+    left: 50%; */
     /* transform: rotate(-90deg) */
 }
 
 .hour{
     transform: rotate(var(--hDeg));
-    height: 10px;
-    
-    /* bottom: 50%; */
-    width: 3em ;
+    height: 1vh;
+    /* margin-left: 6px; */
+    bottom: 48.5%;
+    left: 50.1%;
+    width: 2.5em ;
 }
 
 .minute{
     transform: rotate(var(--mDeg));
-    height: 7px;
+    height: 5px;
     width: 4em;
-    /* bottom: 49%; */
+    bottom: 50%;
+    left: 50%;
     transition: all ease 1s;
+    /* margin-bottom: 4px; */
+    /* margin-left: -1px; */
 }
 
 .second{
     transform: rotate(var(--sDeg));
     background-color: crimson;
-    bottom: 50%;
+    bottom: 49.5%;
+    left: 50%;
     height: 3px;
+    width: 11.5rem;
     z-index: 1;
+    margin-bottom: 3px;
 }
 
 .center{
-    background-color: white;
-    border: 5px solid black;
+    background-color: #1a74be;
+    border: 5px solid #1a74be;
     border-radius: 100%;
     grid-area: center;
-    height: 22%;
+    height: 25px;
     place-self: center;
-    width: 22%;
+    width: 25px;
     z-index: 1;
+    /* display: none; */
 }
 
 .twelve{

@@ -14,6 +14,10 @@ class Hand {
   constructor() {
     this.hand = document.createElement('div');
     this.hand.className = 'hand';
+
+    if(this.constructor === Hand){
+        throw new Error("FYI: Instance of Abstract class cannot be instantiated");
+        }
   }
 
   calculateDegDeg(value) {
@@ -31,9 +35,13 @@ class HoursHand extends Hand {
   }
 
   // polymorphism
-  calculateDeg(value) {
+  calculateDeg(value, mins) {
+    let hourDegree = (value / 12) * 360 - 90;
+
     return (value / 12) * 360 - 90;
-    // return (value - 12) * 30;
+    // return ((value-12)*60)*30-90;
+    // return (value - 12) * 30-90;
+    // return (hourDegree*60 + mins) / 6 -90
   }
 }
 
@@ -94,7 +102,7 @@ class Page {
       //   console.log((date.getHours() / 12) * 360 - 90);
 
       console.log(date.getSeconds());
-      let hourDeg = hoursHand.calculateDeg(date.getHours());
+      let hourDeg = hoursHand.calculateDeg(date.getHours(), date.getMinutes());
       //   hoursHand.Hand.style.transform = `rotate(${hourDeg}deg)`;
       root.style.setProperty('--hDeg', `${hourDeg}deg`);
 
