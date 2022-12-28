@@ -1,0 +1,105 @@
+:root{
+    --hDeg : 0deg;
+    --mDeg: 0deg;
+    --sDeg: 0deg;
+    --clockColor : darkslateblue;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    align-items: center;
+    display: flex;
+    font-size: 45px;
+    height: 100vh;
+    justify-content: center;
+    width: 100%;
+}
+
+.clock{
+    background-color: var(--clockColor);
+    border-radius: 50%;
+    border: 1px black solid;
+    display: grid;
+    grid-template-areas: ". twelve ."
+    "nine center three"
+    ". six .";
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    height: 400px;
+    width: 400px;                
+}
+
+.hand{
+    height: 5px;
+    width: 11rem;
+    background-color: black;
+    
+    transform-origin:top left;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    /* transform: rotate(-90deg) */
+}
+
+.hour{
+    transform: rotate(var(--hDeg));
+    height: 10px;
+    
+    /* bottom: 50%; */
+    width: 3em ;
+}
+
+.minute{
+    transform: rotate(var(--mDeg));
+    height: 7px;
+    width: 4em;
+    /* bottom: 49%; */
+    transition: all ease 1s;
+}
+
+.second{
+    transform: rotate(var(--sDeg));
+    background-color: crimson;
+    bottom: 50%;
+    height: 3px;
+    z-index: 1;
+}
+
+.center{
+    background-color: white;
+    border: 5px solid black;
+    border-radius: 100%;
+    grid-area: center;
+    height: 22%;
+    place-self: center;
+    width: 22%;
+    z-index: 1;
+}
+
+.twelve{
+    grid-area: twelve;
+    justify-self: center;
+}
+
+.three{
+    align-self: center;
+    grid-area: three;
+    justify-self: end;
+}
+
+.six{
+    align-self: end;
+    grid-area: six;
+    justify-self: center;
+}
+
+.nine{
+    align-self: center;
+    grid-area: nine;
+}
