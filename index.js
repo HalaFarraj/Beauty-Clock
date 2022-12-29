@@ -15,9 +15,12 @@ class Hand {
     this.hand = document.createElement('div');
     this.hand.className = 'hand';
 
-    if(this.constructor === Hand){
-        throw new Error("FYI: Instance of Abstract class cannot be instantiated");
-        }
+    // Makes the class abstract
+    if (this.constructor === Hand) {
+      throw new Error(
+        'FYI: Instance of Abstract class cannot be instantiated'
+      );
+    }
   }
 
   calculateDegDeg(value) {
@@ -35,13 +38,8 @@ class HoursHand extends Hand {
   }
 
   // polymorphism
-  calculateDeg(value, mins) {
-    let hourDegree = (value / 12) * 360 - 90;
-
-    return (value / 12) * 360 - 90;
-    // return ((value-12)*60)*30-90;
-    // return (value - 12) * 30-90;
-    // return (hourDegree*60 + mins) / 6 -90
+  calculateDeg(hour, mins) {
+    return hour * 30 + (mins / 60) * 6 - 90;
   }
 }
 
@@ -52,8 +50,8 @@ class MinutesHand extends Hand {
   }
 
   // polymorphism
+
   calculateDeg(value) {
-    // return (value / 60) * 360 - 90;
     return value * 6 - 90;
   }
 }
@@ -98,20 +96,18 @@ class Page {
     let root = document.documentElement;
     setInterval(() => {
       let date = new Date();
-      //   console.log(date.getHours());
-      //   console.log((date.getHours() / 12) * 360 - 90);
 
       console.log(date.getSeconds());
-      let hourDeg = hoursHand.calculateDeg(date.getHours(), date.getMinutes());
-      //   hoursHand.Hand.style.transform = `rotate(${hourDeg}deg)`;
+      let hourDeg = hoursHand.calculateDeg(
+        date.getHours(),
+        date.getMinutes()
+      );
       root.style.setProperty('--hDeg', `${hourDeg}deg`);
 
       let minDeg = minutesHand.calculateDeg(date.getMinutes());
-      //   minutesHand.Hand.style.transform = `rotate(${minDeg}deg)`;
       root.style.setProperty('--mDeg', `${minDeg}deg`);
 
       let secDeg = secondsHand.calculateDeg(date.getSeconds());
-      //   secondsHand.Hand.style.transform = `rotate(${secDeg}deg)`;
       root.style.setProperty('--sDeg', `${secDeg}deg`);
     }, 1000);
   }

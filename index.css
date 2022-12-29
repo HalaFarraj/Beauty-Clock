@@ -1,8 +1,15 @@
 :root{
+    --clockColor : #d1dae3;
+    --bodyColor:#d1dae3;
+    --hoursColor: #777777;
+    --clockShadowColor: #989ea5;
+    --handColor: #000000;
+    --secondsHandColor: #dc143c;
+    --centerColor: #1a74be;
+    --textShadowColor: #7777777a;
     --hDeg : 0deg;
     --mDeg: 0deg;
     --sDeg: 0deg;
-    --clockColor : #d1dae3;
 }
 
 *{
@@ -13,88 +20,77 @@
 
 body{
     align-items: center;
+    background-color: var(--bodyColor);
     display: flex;
     font-size: 45px;
     height: 100vh;
     justify-content: center;
     width: 100%;
-    background-color: #d1dae3;
 }
 
 .clock{
     background-color: var(--clockColor);
     border-radius: 50%;
-    color: #777777;
-    font-weight: 700;
-    text-shadow: 2px 2px #7777777a;
-    /* border: 1px black solid; */
+    box-shadow: 7px 7px 7px var(--clockShadowColor),
+    inset 0 0 50px var(--clockShadowColor);
+    color: var(--hoursColor) ;
     display: grid;
+    font-weight: 700;
     grid-template-areas: ". twelve ."
     "nine center three"
     ". six .";
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(3,1fr);
     height: 500px;
-    width: 500px;     
-    box-shadow: 7px 7px 7px #989ea5, 
-    inset 0 0 50px #989ea5;        
-    padding: 15px; 
+    padding: 15px;
+    text-shadow: 2px 2px var(--textShadowColor);
+    width: 500px;
 }
 
 .hand{
-    /* height: 5px;
-    width: 11rem; */
-    background-color: black;
-    
-    transform-origin:top left;
+    background-color: var(--handColor);
     border-radius: 5px;
     position: absolute;
-    /* bottom: 50%;
-    left: 50%; */
-    /* transform: rotate(-90deg) */
+    transform-origin:top left;
 }
 
 .hour{
+    bottom: 49.6%;
+    height: 7px;
+    left: 49.8%;
     transform: rotate(var(--hDeg));
-    height: 1vh;
-    /* margin-left: 6px; */
-    bottom: 48.5%;
-    left: 50.1%;
-    width: 2.5em ;
+    width: 100px;
 }
 
 .minute{
-    transform: rotate(var(--mDeg));
+    bottom: 49.5%;
     height: 5px;
-    width: 4em;
-    bottom: 50%;
     left: 50%;
+    transform: rotate(var(--mDeg));
     transition: all ease 1s;
-    /* margin-bottom: 4px; */
-    /* margin-left: -1px; */
+    width: 180px;
 }
 
 .second{
-    transform: rotate(var(--sDeg));
-    background-color: crimson;
+    background-color: var(--secondsHandColor);
     bottom: 49.5%;
-    left: 50%;
     height: 3px;
+    left: 49.8%;
+    margin-bottom: 3px;
+    transform: rotate(var(--sDeg));
     width: 11.5rem;
     z-index: 1;
-    margin-bottom: 3px;
 }
 
 .center{
-    background-color: #1a74be;
-    border: 5px solid #1a74be;
+    background-color:var(--centerColor); 
     border-radius: 100%;
+    border: 5px solid var(--centerColor);
     grid-area: center;
     height: 25px;
     place-self: center;
     width: 25px;
     z-index: 1;
-    /* display: none; */
 }
 
 .twelve{
@@ -118,3 +114,22 @@ body{
     align-self: center;
     grid-area: nine;
 }
+
+@media only screen and (max-width: 530px ) {
+    
+    .clock{
+        height: 300px;
+        width: 300px;
+    }
+    .hour{
+        width: 70px;
+    }
+    .minute{
+        width: 120px;
+    }
+
+    .second{
+        width: 130px;
+    }
+}
+
