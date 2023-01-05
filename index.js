@@ -23,9 +23,15 @@ class Hand {
     }
   }
 
-  calculateDegDeg(value) {
+  calculateDeg(value) {
     return value;
   }
+
+  set className(classValue)
+  {
+    this.hand.classList += ` ${classValue}`
+  }
+
   get Hand() {
     return this.hand;
   }
@@ -34,7 +40,7 @@ class Hand {
 class HoursHand extends Hand {
   constructor() {
     super();
-    this.hand.classList += ' hour';
+    this.className= ' hour';
   }
 
   // polymorphism
@@ -46,7 +52,7 @@ class HoursHand extends Hand {
 class MinutesHand extends Hand {
   constructor() {
     super();
-    this.hand.classList += ' minute';
+    this.className = ' minute';
   }
 
   // polymorphism
@@ -59,7 +65,7 @@ class MinutesHand extends Hand {
 class SecondsHand extends Hand {
   constructor() {
     super();
-    this.hand.classList += ' second';
+    this.className = ' second';
   }
 
   // polymorphism

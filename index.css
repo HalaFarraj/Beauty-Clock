@@ -1,12 +1,11 @@
 :root{
-    --clockColor : #d1dae3;
-    --bodyColor:#d1dae3;
-    --hoursColor: #777777;
-    --clockShadowColor: #989ea5;
-    --handColor: #000000;
-    --secondsHandColor: #dc143c;
-    --centerColor: #1a74be;
-    --textShadowColor: #7777777a;
+    --lightBlue : #d1dae3;
+    --grey: #777777;
+    --lightGrey: #989ea5;
+    --black: #000000;
+    --red: #dc143c;
+    --babyBlue: #1a74be;
+    --darkGrey: #7777777a;
     --hDeg : 0deg;
     --mDeg: 0deg;
     --sDeg: 0deg;
@@ -20,7 +19,7 @@
 
 body{
     align-items: center;
-    background-color: var(--bodyColor);
+    background-color: var(--lightBlue);
     display: flex;
     font-size: 45px;
     height: 100vh;
@@ -29,11 +28,11 @@ body{
 }
 
 .clock{
-    background-color: var(--clockColor);
+    background-color: var(--lightBlue);
     border-radius: 50%;
-    box-shadow: 7px 7px 7px var(--clockShadowColor),
-    inset 0 0 50px var(--clockShadowColor);
-    color: var(--hoursColor) ;
+    box-shadow: 7px 7px 7px var(--lightGrey),
+    inset 0 0 50px var(--lightGrey);
+    color: var(--grey) ;
     display: grid;
     font-weight: 700;
     grid-template-areas: ". twelve ."
@@ -43,12 +42,12 @@ body{
     grid-template-rows: repeat(3,1fr);
     height: 500px;
     padding: 15px;
-    text-shadow: 2px 2px var(--textShadowColor);
+    text-shadow: 2px 2px var(--darkGrey);
     width: 500px;
 }
 
 .hand{
-    background-color: var(--handColor);
+    background-color: var(--black);
     border-radius: 5px;
     position: absolute;
     transform-origin:top left;
@@ -72,7 +71,7 @@ body{
 }
 
 .second{
-    background-color: var(--secondsHandColor);
+    background-color: var(--red);
     bottom: 49.5%;
     height: 3px;
     left: 49.8%;
@@ -83,9 +82,9 @@ body{
 }
 
 .center{
-    background-color:var(--centerColor); 
+    background-color:var(--babyBlue); 
     border-radius: 100%;
-    border: 5px solid var(--centerColor);
+    border: 5px solid var(--babyBlue);
     grid-area: center;
     height: 25px;
     place-self: center;
